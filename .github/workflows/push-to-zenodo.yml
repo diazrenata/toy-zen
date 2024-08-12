@@ -4,7 +4,7 @@ on:
 
 jobs:
   toy_push:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     env:
       ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
     steps:
