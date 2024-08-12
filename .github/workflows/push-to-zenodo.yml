@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: main
+
+jobs:
+  toy_push:
+    runs-on: ubuntu-latest
+    env:
+      ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+    steps:
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::zen4R
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up directories
+        run: Rscript -e 'source("for_actions.R")'
